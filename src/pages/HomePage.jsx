@@ -32,7 +32,9 @@ const HomePage = () => {
         <div className="grid md:grid-cols-3 grid-cols-2 gap-7 px-7 w-full h-full">
           {products && products.length
             ? products.map((productItem) => (
-                <ProductCart productItem={productItem} />
+                <div key={productItem.id} className="main">
+                  <ProductCart productItem={productItem} />
+                </div>
               ))
             : null}
         </div>
