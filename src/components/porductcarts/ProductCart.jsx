@@ -1,11 +1,17 @@
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/slices/cart-sclice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../store/slices/cart-sclice";
 
-const ProductCart = ({ productItem, indx }) => {
+const ProductCart = ({ productItem }) => {
   const dispatch = useDispatch();
+
+  const cart = useSelector((state) => state.cart);
 
   const handelAddToCart = () => {
     dispatch(addToCart(productItem));
+  };
+
+  const handelRemoveFromCart = () => {
+    dispatch(removeFromCart(productItem.id));
   };
 
   return (
@@ -24,10 +30,16 @@ const ProductCart = ({ productItem, indx }) => {
       </div>
       <div className="flex items-center mt-7">
         <button
-          onClick={handelAddToCart}
+          onClick={
+            cart.some((items) => items.id === productItem.id)
+              ? handelRemoveFromCart
+              : handelAddToCart
+          }
           className="bg-yellow-500 px-5 py-3 rounded-md font-semibold text-white cursor-pointer"
         >
-          Addo To Cart
+          {cart.some((items) => items.id === productItem.id)
+            ? "Remove from Cart"
+            : "Add to Cart"}
         </button>
       </div>
     </div>

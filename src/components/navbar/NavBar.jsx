@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+
   return (
     <div>
       <nav className="flex justify-between px-7 py-10 bg-zinc-100">
         <Link to="/">
-          <h1 className="font-semibold md:text-4xl text-3xl text-sky-600">
+          <h1 className="font-semibold md:text-3xl text-2xl text-sky-600 tracking-tighter">
             RTK shoping cart
           </h1>
         </Link>
@@ -16,6 +17,7 @@ const NavBar = () => {
             </li>
             <li>
               <Link to="/cart"> Cart </Link>
+              <span className="font-bold text-2xl text-green-600 flex items-end justify-end">3</span>
             </li>
           </ul>
         </div>
