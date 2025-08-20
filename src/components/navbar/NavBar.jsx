@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const cart = useSelector((state) => state.cart);
 
   return (
     <div>
@@ -11,13 +13,15 @@ const NavBar = () => {
           </h1>
         </Link>
         <div>
-          <ul className="flex gap-7 font-semibold text-xl text-zinc-700 px-9">
+          <ul className="flex gap-7 font-semibold text-xl text-zinc-700 px-9 relative">
             <li>
               <Link to="/"> Home </Link>
             </li>
             <li>
               <Link to="/cart"> Cart </Link>
-              <span className="font-bold text-2xl text-green-600 flex items-end justify-end">3</span>
+              <span className="font-bold text-2xl text-green-600 absolute -top-[5vh]  flex justify-center items-center">
+                {cart.length}
+              </span>
             </li>
           </ul>
         </div>

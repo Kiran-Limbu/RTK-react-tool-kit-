@@ -5,13 +5,14 @@ const ProductCart = ({ productItem }) => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
-
+  
   const handelAddToCart = () => {
     dispatch(addToCart(productItem));
   };
 
   const handelRemoveFromCart = () => {
     dispatch(removeFromCart(productItem.id));
+    localStorage.removeItem(productItem.id);
   };
 
   return (
